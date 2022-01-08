@@ -11,6 +11,8 @@ from ahttp import requests
 from dotenv import load_dotenv
 import os
 
+from errorhandling import on_command_error
+
 load_dotenv()
 
 TOKEN = os.environ["DISCORD_TOKEN"] #grabs the token after loading it with load_dotenv()
@@ -26,10 +28,12 @@ import json
 intents = discord.Intents.default() # will require all intents by default, change this to match your bot's intents
 
 bot = commands.Bot(
-                    command_prefix="?",
+                    command_prefix=";",
                     intents=intents,
                     help_command=None # <- uncomment this if you want to write your own help command
                     )
+
+bot.on_command_error = on_command_error
 
 @bot.event # @bot.event attaches the function to the bot's event listener. 
 async def on_ready(): #the name of the function denotes which event it listens to
