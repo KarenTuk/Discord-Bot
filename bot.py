@@ -81,7 +81,8 @@ async def period(ctx: commands.Context, *, msg:str):
 
 @bot.command()
 async def sis(ctx: commands.Context):
-    await ctx.embed(title=f"🙌 Go off Sis 🙌 ")
+    """ Add 'Go off sis' to the end of your message"""
+    await ctx.embed(title=f"🙌  Go off sis 🙌 ")
 
 @bot.command()
 async def spread(ctx: commands.Context, *, msg:str):
@@ -93,25 +94,30 @@ async def spread(ctx: commands.Context, *, msg:str):
 
 @bot.command()
 async def wendys(ctx:commands.Context):
+    """ Send a message that says 'Ma'am, this is a Wendy's. ' """
     await ctx.embed(title="Ma'am, this is a Wendy's. ")
 
 @bot.command()
 async def pfp(ctx, member: discord.Member=None):
+    """ Display the requested user's pfp"""
     member = member or ctx.author
     await ctx.embed(title=member, image_url=member.avatar_url)
 
 @bot.command()
 async def info(ctx, member: discord.Member=None):
+    """ Display information about the requested user"""
     member = member or ctx.author
     await ctx.embed(title="Member info", description = f"Display name: {member.display_name}\nMember id: {member.id}\nDate created: {member.created_at.strftime('%A, %d %B %Y')}")
 
 @bot.command()
 async def date(ctx:commands.Context):
+    """ Display the current date"""
     await ctx.embed(title="Today's Date", description = datetime.datetime.today().strftime("%A, %d %B %Y"))
 
 
 @bot.command()
 async def kanye(ctx:commands.Context):
+    """ Display a random quote from Kanye West"""
     data = await requests.get_json("https://api.kanye.rest/")
     if data is None:
         await ctx.embed(title = "Could not get quote")
@@ -120,6 +126,7 @@ async def kanye(ctx:commands.Context):
 
 @bot.command()
 async def bored(ctx:commands.Context):
+    """ Display a random activity"""
     data = await requests.get_json("http://www.boredapi.com/api/activity/")
     if data is None:
         await ctx.embed(title = "could not fulfill request")
@@ -127,6 +134,7 @@ async def bored(ctx:commands.Context):
 
 @bot.command()
 async def fox(ctx:commands.Context):
+    """ Display a random picture of a fox"""
     data = await requests.get_json("https://randomfox.ca/floof/?ref=apilist.fun")
     if data is None:
         await ctx.embed(title = "could not fulfill request")
@@ -135,6 +143,7 @@ async def fox(ctx:commands.Context):
 
 @bot.command()
 async def google(ctx:commands.Context, *, query: commands.clean_content):
+    """ Display the most requested image result from google images"""
     data = await requests.get_json(f"https://gurgle.nathaniel-fernandes.workers.dev/?q={quote(query)}", [])
 
     if len(data) == 0:
