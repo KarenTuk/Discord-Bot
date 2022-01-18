@@ -30,8 +30,8 @@ intents = discord.Intents.default() # will require all intents by default, chang
 
 bot = commands.Bot(
                     command_prefix=";",
-                    intents=intents
-                    #help_command=  <- uncomment this if you want to write your own help command
+                    intents=intents,
+                    help_command= help #  <- uncomment this if you want to write your own help command
                     )
 
 bot.on_command_error = on_command_error
