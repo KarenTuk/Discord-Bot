@@ -3,6 +3,7 @@
 
 # import pip._vendor.certifi
 
+from turtle import title
 from urllib.parse import quote
 import random
 import helpers
@@ -47,6 +48,12 @@ async def on_message(message : discord.Message):
     if message.content == "Hi":
         await message.channel.send("😎👍")
     await bot.process_commands(message=message)
+
+@bot.command()
+async def help(ctx):
+    await ctx.embed(title="hello")
+
+
 
 @bot.command()
 async def pp(ctx):
