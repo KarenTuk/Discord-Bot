@@ -52,6 +52,7 @@ async def on_message(message : discord.Message):
 
 @bot.command()
 async def help(ctx):
+    """Display the descriptions of all the available commands"""
     dsc = []
     for c in bot.commands:
         dsc.append(f"**{c.name}**\n> {c.help}")
