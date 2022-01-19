@@ -3,6 +3,7 @@
 
 # import pip._vendor.certifi
 
+from pydoc import describe
 from turtle import title
 from urllib.parse import quote
 import random
@@ -51,7 +52,11 @@ async def on_message(message : discord.Message):
 
 @bot.command()
 async def help(ctx):
-    await ctx.embed(title="hello")
+    dsc = []
+    for c in bot.commands:
+        dsc.append(f"**{c.name}**\n> {c.help}")
+    dsc = "\n\n".join(dsc)
+    await ctx.embed(title="Help   |   List of Commands", description=dsc)
 
 
 
@@ -101,7 +106,7 @@ async def spread(ctx: commands.Context, *, msg:str):
 
 @bot.command()
 async def wendys(ctx:commands.Context):
-    """ Send a message that says 'Ma'am, this is a Wendy's. ' """
+    """ Send a message that says 'Ma'am, this is a Wendy's.' """
     await ctx.embed(title="Ma'am, this is a Wendy's. ")
 
 @bot.command()
